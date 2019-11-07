@@ -20,7 +20,7 @@ public class SolicitacaoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Solicitacao>> solicitaTransferencia() {
+    public ResponseEntity<List<Solicitacao>> listarTodos() {
         return ResponseEntity.ok(solicitacaoService.listarTodos());
     }
 }
