@@ -1,5 +1,5 @@
 CREATE TABLE solicitacao (
-  id_solicitacao bigint(20) NOT NULL AUTO_INCREMENT,
+  id_solicitacao varchar(200) NOT NULL ,
   id_cliente_origem varchar(30) NOT NULL ,
   id_cliente_destino varchar(30) NOT NULL,
   id_correntista_origem varchar(14) NOT NULL,

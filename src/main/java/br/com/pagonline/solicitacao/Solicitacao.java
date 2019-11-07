@@ -11,8 +11,7 @@ import java.math.BigDecimal;
 public class Solicitacao implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long idSolicitacao;
+    private String idSolicitacao;
 
     private String idClienteOrigem;
 
@@ -24,11 +23,11 @@ public class Solicitacao implements Serializable {
 
     private BigDecimal valor;
 
-    public Long getIdSolicitacao() {
+    public String getIdSolicitacao() {
         return idSolicitacao;
     }
 
-    public void setIdSolicitacao(Long idSolicitacao) {
+    public void setIdSolicitacao(String idSolicitacao) {
         this.idSolicitacao = idSolicitacao;
     }
 
