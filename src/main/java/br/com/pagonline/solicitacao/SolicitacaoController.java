@@ -13,9 +13,13 @@ public class SolicitacaoController {
     @Autowired
     private SolicitacaoService solicitacaoService;
 
+    @Autowired
+    private SolicitacaoTransferencia solicitacaoTransferencia;
+
     @PostMapping("/registra")
     public ResponseEntity solicitaTransferencia(@RequestBody Solicitacao solicitacao) {
         solicitacaoService.save(solicitacao);
+        solicitacaoTransferencia.transferir(solicitacao);
         return ResponseEntity.ok("OK");
     }
 
