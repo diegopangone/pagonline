@@ -7,8 +7,11 @@ ip a s
 # Setup MySQL Docker
 
 ```
-docker container run --rm -d -p 3306:3306 -v /home/micro8696/mysql_datadir:/var/lib/mysql --name pagonline.mysql -e MYSQL_ROOT_PASSWORD=cip123 -e MYSQL_DATABASE=pagonline mysql:5.7
+docker container run --rm -d -p 3306:3306 -v /home/micro8696/mysql_datadir:/var/lib/mysql --name pagonline.mysql -e MYSQL_ROOT_PASSWORD=cip123 -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=pagonline mysql:5.7
 ```
+
+set password for 'root'@'localhost' = 'cip123';
+set password for 'root'@'%' = 'cip123';
 
 # Register POST example
 
