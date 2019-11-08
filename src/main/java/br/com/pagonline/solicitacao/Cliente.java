@@ -1,10 +1,12 @@
 package br.com.pagonline.solicitacao;
 
+import java.util.List;
+
 public class Cliente {
 
     private String id;
     private String nome;
-    private String url;
+    private List<String> url;
     private String status;
 
     public String getId() {
@@ -15,7 +17,7 @@ public class Cliente {
         return nome;
     }
 
-    public String getUrl() {
+    public List<String> getUrl() {
         return url;
     }
 

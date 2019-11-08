@@ -28,22 +28,19 @@ public class SolicitacaoController {
     @PostMapping("/registra")
     public ResponseEntity solicitaTransferencia(@RequestBody Solicitacao solicitacao) {
 
+        System.out.println("Request Received!");
         solicitacao.setIdSolicitacao(solicitacao.getIdClienteOrigem()+"|"+solicitacao.getIdClienteDestino()
                 +"|"+solicitacao.getIdCorrentistaOrigem()+"|"+solicitacao.getIdCorrentistaDestino()
                 +"|"+solicitacao.getValor());
 
 
         Cliente cliente = clienteService.getClienteUrl(solicitacao.getIdClienteDestino());
-        System.out.println("cliente - url : " + cliente.getUrl());
 
         solicitacaoService.save(solicitacao);
-        System.out.println("Salvou : " + solicitacao.getIdSolicitacao());
 
         solicitacaoTransferencia.transferir(solicitacao);
-        System.out.println("Transferiu : " + solicitacao.getIdClienteDestino());
 
         notificaCliente(cliente, solicitacao);
-        System.out.println("Notificou : " + solicitacao.getIdSolicitacao());
 
         return ResponseEntity.ok("OK");
     }
@@ -54,7 +51,7 @@ public class SolicitacaoController {
                 solicitacao.getIdClienteDestino(),
                 solicitacao.getValor());
 
-        ResponseEntity responseEntity = restTemplate.postForEntity(cliente.getUrl(), notificacaoCredito, String.class);
+        ResponseEntity responseEntity = restTemplate.postForEntity(cliente.getUrl().get(0), notificacaoCredito, String.class);
 
         if(HttpStatus.OK != responseEntity.getStatusCode()){
             throw new RuntimeException("Serviço do takeshi está fora");
